@@ -1,0 +1,12 @@
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    box-shadow: rgb(1, 212, 4) 1px 1px 20px 20px;
+}
+
+body {
+    background-color: black;
+}

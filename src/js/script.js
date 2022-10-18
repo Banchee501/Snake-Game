@@ -13,7 +13,7 @@ const heightInBlocks = height / blockSize;
 let score = 0;
 
 function drawBorder() {
-    ctx.fillStyle = "Gray";
+    ctx.fillStyle = "LimeGreen";
     ctx.fillRect(0, 0, width, blockSize);
     ctx.fillRect(0, height - blockSize, width, blockSize);
     ctx.fillRect(0, 0, blockSize, height);
@@ -21,8 +21,8 @@ function drawBorder() {
 };
 
 function drawScore() {
-    ctx.font = "20px Courier";
-    ctx.fillStyle = "Black";
+    ctx.font = "20px Montserrat";
+    ctx.fillStyle = "White";
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     ctx.fillText("Score: " + score, blockSize, blockSize);
@@ -30,8 +30,8 @@ function drawScore() {
 
 function gameOver() {
     clearInterval(intervalId);
-    ctx.font = "60px Courier";
-    ctx.fillStyle = "Black";
+    ctx.font = "60px Montserrat";
+    ctx.fillStyle = "White";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("Game Over", width / 2, height / 2);
@@ -84,7 +84,7 @@ class Snake {
 
 Snake.prototype.draw = function () {
     for (let i = 0; i < this.segments.length; i++) {
-        this.segments[i].drawSquare("Blue");
+        this.segments[i].drawSquare("Green");
     }
 };
 
@@ -168,6 +168,12 @@ Apple.prototype.move = function () {
 
 const snake = new Snake();
 const apple = new Apple();
+
+// function drawGame() {
+//     let speed = 10;
+
+//     setTimeout(drawGame, 1000 / speed);
+// };
 
 const intervalId = setInterval(function () {
     ctx.clearRect(0, 0, width, height);
