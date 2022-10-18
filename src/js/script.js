@@ -23,18 +23,14 @@ function drawBorder() {
 function drawScore() {
     ctx.font = "20px Montserrat";
     ctx.fillStyle = "White";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
-    ctx.fillText("Score: " + score, blockSize, blockSize);
+    ctx.fillText("Score: " + score, canvas.clientWidth - 460, 50);
 };
 
 function gameOver() {
     clearInterval(intervalId);
     ctx.font = "60px Montserrat";
     ctx.fillStyle = "White";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText("Game Over", width / 2, height / 2);
+    ctx.fillText("Game Over! ", canvas.clientWidth / 6.5, canvas.clientHeight / 2);
 };
 
 function circle(x, y, radius, fillCircle) {
@@ -168,12 +164,6 @@ Apple.prototype.move = function () {
 
 const snake = new Snake();
 const apple = new Apple();
-
-// function drawGame() {
-//     let speed = 10;
-
-//     setTimeout(drawGame, 1000 / speed);
-// };
 
 const intervalId = setInterval(function () {
     ctx.clearRect(0, 0, width, height);
