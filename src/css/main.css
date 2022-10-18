@@ -1,12 +1,40 @@
 canvas {
-    padding-left: 0;
-    padding-right: 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+.activeGame {
     box-shadow: rgb(1, 212, 4) 1px 1px 20px 20px;
+}
+
+.overGame {
+    box-shadow: rgb(132, 141, 0) 1px 1px 20px 20px;
 }
 
 body {
     background-color: black;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: aliceblue;
+    display: none;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-right: 0;
+    transform: translate(-50%, -100%);
+    font-size: calc(1em + 3vw);
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: aliceblue;
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: calc(0.5em + 2vw);
 }

@@ -13,7 +13,7 @@ const heightInBlocks = height / blockSize;
 let score = 0;
 
 function drawBorder() {
-    ctx.fillStyle = "LimeGreen";
+    ctx.fillStyle = "rgb(1, 212, 4)";
     ctx.fillRect(0, 0, width, blockSize);
     ctx.fillRect(0, height - blockSize, width, blockSize);
     ctx.fillRect(0, 0, blockSize, height);
@@ -21,16 +21,16 @@ function drawBorder() {
 };
 
 function drawScore() {
-    ctx.font = "20px Montserrat";
-    ctx.fillStyle = "White";
-    ctx.fillText("Score: " + score, canvas.clientWidth - 460, 50);
+    const scoreElement = document.querySelector('h3');
+    scoreElement.textContent = `Score: ${score}`;
 };
 
 function gameOver() {
+    const text = document.querySelector("h1");
+    text.style.display = 'block';
+    canvas.classList.remove('activeGame');
+    canvas.classList.add('overGame');
     clearInterval(intervalId);
-    ctx.font = "60px Montserrat";
-    ctx.fillStyle = "White";
-    ctx.fillText("Game Over! ", canvas.clientWidth / 6.5, canvas.clientHeight / 2);
 };
 
 function circle(x, y, radius, fillCircle) {
