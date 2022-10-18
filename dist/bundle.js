@@ -1,11 +1,18 @@
-'use strict'
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+/*!**************************!*\
+  !*** ./src/js/script.js ***!
+  \**************************/
+
+
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
 const width = canvas.width;
 const height = canvas.height;
+const blockSize = 20;
 
-const blockSize = 10;
 const widthInBlocks = width / blockSize;
 const heightInBlocks = height / blockSize;
 
@@ -82,7 +89,7 @@ class Snake {
 };
 
 Snake.prototype.draw = function () {
-    for (var i = 0; i < this.segments.length; i++) {
+    for (let i = 0; i < this.segments.length; i++) {
         this.segments[i].drawSquare("Blue");
     }
 };
@@ -91,16 +98,21 @@ Snake.prototype.move = function () {
     const head = this.segments[0];
     let newHead;
     this.direction = this.nextDirection;
-    if (this.direction === "right") {
-        newHead = new Block(head.col + 1, head.row);
-    } else if (this.direction === "down") {
-        newHead = new Block(head.col, head.row + 1);
-    } else if (this.direction === "left") {
-        newHead = new Block(head.col - 1, head.row);
-    } else if (this.direction === "up") {
-        newHead = new Block(head.col, head.row - 1);
-    }
 
+    switch (this.direction) {
+        case "right":
+            newHead = new Block(head.col + 1, head.row);
+            break;
+        case "down":
+            newHead = new Block(head.col, head.row + 1);
+            break;
+        case "left":
+            newHead = new Block(head.col - 1, head.row);
+            break;
+        case "up":
+            newHead = new Block(head.col, head.row - 1);
+            break;
+    }
     if (this.checkCollision(newHead)) {
         gameOver();
         return;
@@ -155,7 +167,9 @@ Apple.prototype.draw = function () {
 Apple.prototype.move = function () {
     const randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
     const randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
-    this.position = new Block(randomCol, randomRow);
+    if (this.position !== this.segments) {
+        this.position = new Block(randomCol, randomRow);
+    }
 };
 
 const snake = new Snake();
@@ -183,3 +197,6 @@ document.body.addEventListener("keydown", (event) => {
         snake.setDirection(newDirection);
     }
 });
+/******/ })()
+;
+//# sourceMappingURL=bundle.js.map
