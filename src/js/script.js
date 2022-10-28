@@ -1,19 +1,23 @@
 'use strict'
+const canvas = document.querySelector("#canvas");
+const ctx = canvas.getContext("2d");
+const text = document.querySelector("h1");
+text.style.display = 'none';
+
+const button = document.querySelector('button');
+
+const width = canvas.width;
+const height = canvas.height;
+const blockSize = 20;
+
+const widthInBlocks = width / blockSize;
+const heightInBlocks = height / blockSize;
 
 const game = () => {
-    const canvas = document.querySelector("#canvas");
-    const ctx = canvas.getContext("2d");
-    const text = document.querySelector("h1");
-    text.style.display = 'none';
-
-    const width = canvas.width;
-    const height = canvas.height;
-    const blockSize = 20;
-
-    const widthInBlocks = width / blockSize;
-    const heightInBlocks = height / blockSize;
 
     let score = 0;
+
+    button.setAttribute('disabled', true);
 
     function drawBorder() {
         ctx.fillStyle = "rgb(1, 212, 4)";
@@ -26,14 +30,6 @@ const game = () => {
     function drawScore() {
         const scoreElement = document.querySelector('h3');
         scoreElement.textContent = `Score: ${score}`;
-    };
-
-    function gameOver() {
-        text.style.display = 'block';
-        canvas.classList.remove('active__game');
-        canvas.classList.add('over__game');
-        clearInterval(intervalId);
-        button.removeAttribute('disabled');
     };
 
     function circle(x, y, radius, fillCircle) {
@@ -107,7 +103,7 @@ const game = () => {
                 break;
         }
         if (this.checkCollision(newHead)) {
-            gameOver(text);
+            gameOver();
             return;
         }
 
@@ -191,15 +187,18 @@ const game = () => {
         }
     });
 
-    const button = document.querySelector('button');
-    button.setAttribute('disabled', true);
+    function gameOver() {
+        text.style.display = 'block';
+        canvas.classList.remove('active__game');
+        canvas.classList.add('over__game');
+        clearInterval(intervalId);
+        button.removeAttribute('disabled');
+    };
+};
 
-    button.addEventListener('click', () => {
-        canvas.classList.add('active__game');
-        canvas.classList.remove('over__game');
-        text.style.display = 'none';
-        game();
-    });
-}
-
-game();
+button.addEventListener('click', () => {
+    canvas.classList.add('active__game');
+    canvas.classList.remove('over__game');
+    text.style.display = 'none';
+    game();
+});
