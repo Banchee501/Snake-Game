@@ -1,8 +1,7 @@
 'use strict'
-const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
-const text = document.querySelector("h1");
-text.style.display = 'none';
+const ctx = document.querySelector("#canvas").getContext("2d");
+const gameOverText = document.querySelector("h1");
+gameOverText.style.display = 'none';
 
 const button = document.querySelector('button');
 
@@ -28,7 +27,7 @@ const game = () => {
     };
 
     function drawScore() {
-        const scoreElement = document.querySelector('h3');
+        const scoreElement = document.querySelector('.score');
         scoreElement.textContent = `Score: ${score}`;
     };
 
@@ -49,17 +48,17 @@ const game = () => {
         }
     };
 
-    Block.prototype.drawSquare = function (color) {
+    Block.prototype.drawSquare = function () {
         const x = this.col * blockSize;
         const y = this.row * blockSize;
-        ctx.fillStyle = color;
+        ctx.fillStyle = 'Green';
         ctx.fillRect(x, y, blockSize, blockSize);
     };
 
-    Block.prototype.drawCircle = function (color) {
+    Block.prototype.drawCircle = function () {
         const centerX = this.col * blockSize + blockSize / 2;
         const centerY = this.row * blockSize + blockSize / 2;
-        ctx.fillStyle = color;
+        ctx.fillStyle = 'LimeGreen';
         circle(centerX, centerY, blockSize / 2, true);
     };
 
@@ -79,7 +78,7 @@ const game = () => {
 
     Snake.prototype.draw = function () {
         for (let i = 0; i < this.segments.length; i++) {
-            this.segments[i].drawSquare("Green");
+            this.segments[i].drawSquare();
         }
     };
 
@@ -150,15 +149,13 @@ const game = () => {
     };
 
     Apple.prototype.draw = function () {
-        this.position.drawCircle("LimeGreen");
+        this.position.drawCircle();
     };
 
     Apple.prototype.move = function () {
         const randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
         const randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
-        if (this.position !== this.segments) {
-            this.position = new Block(randomCol, randomRow);
-        }
+        this.position = new Block(randomCol, randomRow);
     };
 
     const snake = new Snake();
@@ -188,7 +185,7 @@ const game = () => {
     });
 
     function gameOver() {
-        text.style.display = 'block';
+        gameOverText.style.display = 'block';
         canvas.classList.remove('active__game');
         canvas.classList.add('over__game');
         clearInterval(intervalId);
@@ -199,6 +196,6 @@ const game = () => {
 button.addEventListener('click', () => {
     canvas.classList.add('active__game');
     canvas.classList.remove('over__game');
-    text.style.display = 'none';
+    gameOverText.style.display = 'none';
     game();
 });

@@ -1,6 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: black;
+}
+
 canvas {
     margin: 0 auto;
-    display: block;
+    display: flex;
+    border-radius: 10px;
 }
 
 .active__game {
@@ -8,48 +19,72 @@ canvas {
 }
 
 .over__game {
-    box-shadow: rgb(132, 141, 0) 1px 1px 20px 20px;
-}
-
-body {
-    background-color: black;
+    box-shadow: rgb(1, 212, 4) 1px 1px 20px 20px;
+    filter: blur(20px);
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
     color: aliceblue;
-    margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     padding-right: 0;
     transform: translate(-50%, -100%);
-    font-size: calc(1em + 3vw);
+    font-size: 70px;
 }
 
-h3 {
-    font-family: 'Montserrat', sans-serif;
+.score {
     color: aliceblue;
     display: block;
     text-align: center;
-    margin: 50px auto;
-    font-size: calc(0.5em + 2vw);
+    margin: 40px auto;
+    font-size: 70px;
 }
 
-button {
-    width: 150px;
+.gradient {
+    width: 200px;
     height: 50px;
-    background-color: black;
-    color: limegreen;
-    border-color: limegreen;
+    background: black;
+    color: aliceblue;
     border-radius: 10px;
     font-size: 20px;
-    font-family: 'Montserrat', sans-serif;
     display: block;
-    margin: 50px auto;
+    margin: 80px auto;
     font-weight: 700;
+    position: relative;
 }
 
-.active {
-    display: hidden;
+.gradient:before,
+.gradient:after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    background: linear-gradient(45deg, #00FF00, #006400,
+            #001f00, #006400, #00FF00, #001d00, #006400,
+            #00FF00, #006400);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    z-index: -1;
+    border-radius: 10px;
+    background-size: 400%;
+    animation: animate 20s linear infinite;
+}
+
+.gradient:after {
+    filter: blur(15px)
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 300px 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
