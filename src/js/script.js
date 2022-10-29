@@ -185,14 +185,14 @@ const game = () => {
 
     function gameOver() {
         gameOverText.style.display = 'block';
-        canvas.classList.toggle('over__game');
+        canvas.classList.toggle('canvas__game_over');
         clearInterval(intervalId);
         button.removeAttribute('disabled');
     };
 };
 
 button.addEventListener('click', () => {
-    canvas.classList.toggle('over__game');
+    canvas.classList.toggle('canvas__game_over');
     gameOverText.style.display = 'none';
     game();
 });

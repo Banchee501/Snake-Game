@@ -22,20 +22,19 @@ canvas {
     font-size: 70px;
 }
 
-.game__over {
+.game_over {
     position: absolute;
     top: 50%;
     left: 50%;
-    padding-right: 0;
     transform: translate(-50%, -100%);
     font-size: 70px;
 }
 
-.active__game {
+.canvas__active_game {
     box-shadow: rgb(1, 212, 4) 1px 1px 20px 20px;
 }
 
-.over__game {
+.canvas__game_over {
     filter: blur(20px);
 }
 
