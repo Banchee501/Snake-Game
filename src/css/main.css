@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+    color: aliceblue;
 }
 
 body {
@@ -14,17 +15,14 @@ canvas {
     border-radius: 10px;
 }
 
-.active__game {
-    box-shadow: rgb(1, 212, 4) 1px 1px 20px 20px;
+.score {
+    display: block;
+    text-align: center;
+    margin: 40px auto;
+    font-size: 70px;
 }
 
-.over__game {
-    box-shadow: rgb(1, 212, 4) 1px 1px 20px 20px;
-    filter: blur(20px);
-}
-
-h1 {
-    color: aliceblue;
+.game__over {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,23 +31,28 @@ h1 {
     font-size: 70px;
 }
 
-.score {
-    color: aliceblue;
+.active__game {
+    box-shadow: rgb(1, 212, 4) 1px 1px 20px 20px;
+}
+
+.over__game {
+    filter: blur(20px);
+}
+
+.control {
     display: block;
     text-align: center;
-    margin: 40px auto;
-    font-size: 70px;
+    font-size: 20px;
 }
 
 .gradient {
     width: 200px;
     height: 50px;
     background: black;
-    color: aliceblue;
     border-radius: 10px;
     font-size: 20px;
     display: block;
-    margin: 80px auto;
+    margin: 70px auto;
     font-weight: 700;
     position: relative;
 }
@@ -68,7 +71,7 @@ h1 {
     z-index: -1;
     border-radius: 10px;
     background-size: 400%;
-    animation: animate 20s linear infinite;
+    animation: animate 40s linear infinite;
 }
 
 .gradient:after {
@@ -81,7 +84,7 @@ h1 {
     }
 
     50% {
-        background-position: 300px 0;
+        background-position: 400% 0;
     }
 
     100% {

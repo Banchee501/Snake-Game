@@ -1,8 +1,6 @@
 'use strict'
 const ctx = document.querySelector("#canvas").getContext("2d");
 const gameOverText = document.querySelector("h1");
-gameOverText.style.display = 'none';
-
 const button = document.querySelector('button');
 
 const width = canvas.width;
@@ -132,14 +130,15 @@ const game = () => {
     };
 
     Snake.prototype.setDirection = function (newDirection) {
-        if (this.direction === "up" && newDirection === "down") {
-            return;
-        } else if (this.direction === "right" && newDirection === "left") {
-            return;
-        } else if (this.direction === "down" && newDirection === "up") {
-            return;
-        } else if (this.direction === "left" && newDirection === "right") {
-            return;
+        switch (true) {
+            case this.direction === "up" && newDirection === "down":
+                return;
+            case this.direction === "right" && newDirection === "left":
+                return;
+            case this.direction === "down" && newDirection === "up":
+                return;
+            case this.direction === "left" && newDirection === "right":
+                return;
         }
         this.nextDirection = newDirection;
     };
@@ -186,16 +185,14 @@ const game = () => {
 
     function gameOver() {
         gameOverText.style.display = 'block';
-        canvas.classList.remove('active__game');
-        canvas.classList.add('over__game');
+        canvas.classList.toggle('over__game');
         clearInterval(intervalId);
         button.removeAttribute('disabled');
     };
 };
 
 button.addEventListener('click', () => {
-    canvas.classList.add('active__game');
-    canvas.classList.remove('over__game');
+    canvas.classList.toggle('over__game');
     gameOverText.style.display = 'none';
     game();
 });
