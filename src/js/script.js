@@ -2,6 +2,7 @@
 const ctx = document.querySelector("#canvas").getContext("2d");
 const gameOverText = document.querySelector("h1");
 const button = document.querySelector('button');
+const logo = document.querySelector('.logo');
 
 const width = canvas.width;
 const height = canvas.height;
@@ -194,5 +195,6 @@ const game = () => {
 button.addEventListener('click', () => {
     canvas.classList.toggle('canvas__game_over');
     gameOverText.style.display = 'none';
+    logo.style.display = 'none';
     game();
 });
