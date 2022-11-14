@@ -27,8 +27,8 @@ canvas {
 }
 
 .score {
-    display: block;
-    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
     margin: 40px auto;
     font-size: 70px;
 }
