@@ -156,6 +156,7 @@ const game = () => {
         const randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
         const randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
         this.position = new Block(randomCol, randomRow);
+        soundApple();
     };
 
     const snake = new Snake();
@@ -189,6 +190,19 @@ const game = () => {
         canvas.classList.toggle('canvas__game_over');
         clearInterval(intervalId);
         button.removeAttribute('disabled');
+        soundOver();
+    };
+
+    function soundApple() {
+        const soundOver = document.querySelector('#backgroundaudio');
+        soundOver.src = "/src/audio/EatingAnApple.mp3";
+        soundOver.autoplay = true;
+    };
+
+    function soundOver() {
+        const soundOver = document.querySelector('audio');
+        soundOver.src = "/src/audio/GameOver.mp3";
+        soundOver.autoplay = true;
     };
 };
 
