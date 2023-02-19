@@ -171,19 +171,24 @@ const game = () => {
         drawBorder();
     }, 100);
 
-    const directions = {
-        37: "left",
-        38: "up",
-        39: "right",
-        40: "down"
-    };
-
     document.body.addEventListener("keydown", (event) => {
-        const newDirection = directions[event.keyCode];
-        if (newDirection !== undefined) {
-            snake.setDirection(newDirection);
+        switch (event.key) {
+          case "ArrowLeft":
+            snake.setDirection("left");
+            break;
+          case "ArrowUp":
+            snake.setDirection("up");
+            break;
+          case "ArrowRight":
+            snake.setDirection("right");
+            break;
+          case "ArrowDown":
+            snake.setDirection("down");
+            break;
+          default:
+            break;
         }
-    });
+      });
 
     function gameOver() {
         gameOverText.style.display = 'block';
